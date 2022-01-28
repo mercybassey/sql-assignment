@@ -1,0 +1,10 @@
+CREATE DATABASE Book_Pub; 
+USE Book_Pub;
+CREATE TABLE Publisher(pubID varchar(255) not NULL, bname text(50) not NULL,city varchar(255) not NULL, country text(50) not NULL, PRIMARY KEY(pubID));
+INSERT INTO Publisher(pubID, bname, city, country) VALUES('p22','Random House','Las Vegas','United States'),('p10','Dell Books','Colorado','United States'),('p078','Pen Books','London','United Kingdom'),('p279','Signet Books','Aberdeen','United Kingdom'),('p12','Macmillan','London','United Kingdom'),('p29','Madhavan','Aberdeen','United Kingdom');
+SELECT * FROM Publisher;
+CREATE TABLE Author(authorID varchar(255) not NULL, bname text(50) not NULL,city varchar(255) not NULL, country text(50) not NULL, PRIMARY KEY(authorID));
+INSERT INTO Author(authorID, bname, city, country) VALUES('A21','Grisham','New York','United States'),('A01','Cook','London','United States'),('A27','Hailey','Manchester','United Kingdom'),('A301','Segal','Houtons','United Kingdom'),('A478','Forsyth','New York','United Kingdom');
+SELECT * FROM Author;
+CREATE TABLE Book(BookID varchar(255) not NULL, title text(50) not NULL,authorID  varchar(255) not NULL, pubID varchar(255) not NULL, byear INT(5) not NULL, price FLOAT not NULL, PRIMARY KEY(bookID), FOREIGN KEY (authorID) REFERENCES Author(authorID), FOREIGN KEY (pubID) REFERENCES Publisher(pubID));
+INSERT INTO Book(BookID, title, authorID, pubID, byear, price) VALUES('B01','Painted House','A21','P22', '2001', '195.55'),('B24','Abduction','A01','P078', '2000', '360'),('B861','Airport','A27','P279', '1968', '175.45'),('B233','Invasion','A01','P078','1997','177.9'),('B315','Prizes','A301','P279','1995','256.1'),('B207','Icon','A21','P610','1996','182.35'),('B074','The Simple Truth','A301','P22','1997', '211.0'),('B450','The Class','A21','P12', '1985', '145.8');
